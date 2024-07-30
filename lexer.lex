@@ -91,5 +91,25 @@ WHITE = (" "|\t|\n)
 
 <YYINITIAL>{WHITE}  { /* NO HACER NADA */             }
 
+<YYINITIAL>[+] {return new Token(Token.PLUS); }
+
+<YYINITIAL>[-] {return new Token(Token.MINUS);}
+
+<YYINITIAL>[*] {return new Token(Token.MULT);}
+
+<YYINITIAL>[/] {return new Token(Token.DIV);}
+
+<YYINITIAL>"%" {return new Token(Token.MOD);}
+
+<YYINITIAL>"^" {return new Token(Token.EXP);}
+
+<YYINITIAL>"(" {return new Token(Token.LPAREN);}
+
+<YYINITIAL>")" {return new Token(Token.RPAREN);}
+
+<YYINITIAL>[0-9]+ {return new Token(Token.NUMBER, yytext());}
+
+<YYINITIAL>"~" {return new Token(Token.UNARY);}
+
 <YYINITIAL>.        { return new Token(Token.ERROR);
                       /* todo lo demas es ERROR */ }
